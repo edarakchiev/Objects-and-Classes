@@ -1,0 +1,21 @@
+class Inventory:
+    __capacity = 0
+
+    def __init__(self, capacity):
+        self.capacity = capacity
+        Inventory.__capacity = self.capacity
+        self.items = []
+
+    def add_item(self, item):
+        if self.capacity > 0:
+            self.items.append(item)
+            self.capacity -= 1
+        else:
+            return "not enough room in the inventory"
+
+    @staticmethod
+    def get_capacity():
+        return Inventory.__capacity
+
+    def __repr__(self):
+        return f"Items: {', '.join(self.items)}.\nCapacity left: {self.capacity}"
